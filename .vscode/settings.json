@@ -1,0 +1,18 @@
+{
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": "\\.mat",
+                "cmd": "test",
+            },
+            {
+                "match": "\\.py",
+                "cmd": "test",
+            },
+            {
+                "match": "\\.g4",
+                "cmd": "test",
+            },
+        ]
+    }
+}
