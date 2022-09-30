@@ -1,0 +1,40 @@
+pinmap{cs:DIO2,clk:DIO1,enable:DIO1}
+pingroups{groupa:DIO0,DIO1,DIO2;groupB:DIO0,DIO1,DIO2;groupV:DIO0,DIO1,DIO2}
+set cs=0,clk=1;
+read cs,clk,enable;
+if cs=1,clk=0
+{
+    read cs,clk,enable;
+}
+ 
+def functionwhatever123 ()
+{
+    set cs=0,clk=1;
+    read cs,clk,enable;
+
+    if cs=1,clk=0{
+    set cs=0,clk=1;
+    }
+    
+    if cs=1,clk=0{ 
+    read cs,clk,enable;
+    } 
+    goto addddd;
+
+  
+    loop 6
+    {
+    read cs,clk,enable;
+    goto addddd;
+    functionwhatever123();
+    } 
+
+    increment(1,20);
+}
+ 
+loop 16 
+{
+    read cs,clk,enable;
+    goto addddd;
+    functionwhatever123();
+}
