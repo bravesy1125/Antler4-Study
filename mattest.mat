@@ -1,40 +1,52 @@
-pinmap{cs:DIO2,clk:DIO1,enable:DIO1}
-pingroups{groupa:DIO0,DIO1,DIO2;groupB:DIO0,DIO1,DIO2;groupV:DIO0,DIO1,DIO2}
-set cs=0,clk=1;
-read cs,clk,enable;
-if cs=1,clk=0
+pinmap
 {
-    read cs,clk,enable;
+    cs:DIO2,
+    clk:DIO1,
+    enable:DIO1
 }
+pingroups
+{
+    groupa : DIO0,DIO1,DIO2;
+    groupB : DIO95,DIO94,DIO2;
+    groupV : DIO0,DIO1,DIO2
+}
+
+
  
 def functionwhatever123 ()
 {
-    set cs=0,clk=1;
+asd:    set cs=0,clk=1;
     read cs,clk,enable;
 
     if cs=1,clk=0{
     set cs=0,clk=1;
+    goto labbbbbbb;
     }
     
     if cs=1,clk=0{ 
     read cs,clk,enable;
     } 
-    goto addddd;
+    goto labbbbbbb;
 
   
     loop 6
     {
     read cs,clk,enable;
-    goto addddd;
+    goto asd;
     functionwhatever123();
     } 
 
-    increment(1,20);
+    inc(pingroup1,1:20);
+
+    dec(pingroup1,10:5);
 }
- 
-loop 16 
+
+def main ()
 {
-    read cs,clk,enable;
-    goto addddd;
-    functionwhatever123();
+    loop 16 
+    {
+        read cs,clk,enable;
+        goto addddd;
+        functionwhatever123();
+    }
 }
