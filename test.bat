@@ -1,6 +1,8 @@
-taskkill /im java.exe /f
-antlr4 MAT.g4
-antlr4 -Dlanguage=Python3 MAT.g4 -long-messages -o mat_py
-javac MAT*.java
+
+::antlr4 MAT.g4
+::antlr4 -Dlanguage=Cpp MAT.g4 -o mat_cpp
+antlr4 -Dlanguage=Python3 MAT.g4 -o mat_py 
+::javac MAT*.java
 python main.py mattest.mat
-start /b grun MAT complete -gui mattest.mat
+::taskkill /im java.exe /f
+::start /b grun MAT start -gui mattest.mat

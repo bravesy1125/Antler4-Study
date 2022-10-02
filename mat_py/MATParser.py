@@ -10,7 +10,7 @@ else:
 
 def serializedATN():
     return [
-        4,1,23,203,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,25,203,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,1,0,4,0,40,8,0,
         11,0,12,0,41,1,1,1,1,1,1,3,1,47,8,1,1,2,1,2,1,2,1,2,1,2,5,2,54,8,
@@ -98,9 +98,9 @@ class MATParser ( Parser ):
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "CHANNEL", "PINNAME", "NUMBER", "WS" ]
+                      "CHANNEL", "ID", "NUMBER", "WS", "LINE_COMMENT", "COMMENT" ]
 
-    RULE_complete = 0
+    RULE_start = 0
     RULE_defs = 1
     RULE_defpinmap = 2
     RULE_defpingroups = 3
@@ -120,7 +120,7 @@ class MATParser ( Parser ):
     RULE_setexp = 17
     RULE_readexp = 18
 
-    ruleNames =  [ "complete", "defs", "defpinmap", "defpingroups", "deffunc", 
+    ruleNames =  [ "start", "defs", "defpinmap", "defpingroups", "deffunc", 
                    "labeled_statement", "stmt", "stmtset", "stmtread", "stmtif", 
                    "stmtloop", "stmtgoto", "stmtcall", "stmtinc", "stmtdec", 
                    "map", "pingroup", "setexp", "readexp" ]
@@ -146,9 +146,11 @@ class MATParser ( Parser ):
     T__17=18
     T__18=19
     CHANNEL=20
-    PINNAME=21
+    ID=21
     NUMBER=22
     WS=23
+    LINE_COMMENT=24
+    COMMENT=25
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -159,7 +161,7 @@ class MATParser ( Parser ):
 
 
 
-    class CompleteContext(ParserRuleContext):
+    class StartContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -174,23 +176,23 @@ class MATParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return MATParser.RULE_complete
+            return MATParser.RULE_start
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterComplete" ):
-                listener.enterComplete(self)
+            if hasattr( listener, "enterStart" ):
+                listener.enterStart(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitComplete" ):
-                listener.exitComplete(self)
+            if hasattr( listener, "exitStart" ):
+                listener.exitStart(self)
 
 
 
 
-    def complete(self):
+    def start(self):
 
-        localctx = MATParser.CompleteContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 0, self.RULE_complete)
+        localctx = MATParser.StartContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 0, self.RULE_start)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
@@ -418,8 +420,8 @@ class MATParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def PINNAME(self):
-            return self.getToken(MATParser.PINNAME, 0)
+        def ID(self):
+            return self.getToken(MATParser.ID, 0)
 
         def labeled_statement(self, i:int=None):
             if i is None:
@@ -452,7 +454,7 @@ class MATParser ( Parser ):
             self.state = 72
             self.match(MATParser.T__6)
             self.state = 73
-            self.match(MATParser.PINNAME)
+            self.match(MATParser.ID)
             self.state = 74
             self.match(MATParser.T__7)
             self.state = 75
@@ -489,11 +491,11 @@ class MATParser ( Parser ):
             return self.getTypedRuleContext(MATParser.StmtContext,0)
 
 
-        def PINNAME(self, i:int=None):
+        def ID(self, i:int=None):
             if i is None:
-                return self.getTokens(MATParser.PINNAME)
+                return self.getTokens(MATParser.ID)
             else:
-                return self.getToken(MATParser.PINNAME, i)
+                return self.getToken(MATParser.ID, i)
 
         def getRuleIndex(self):
             return MATParser.RULE_labeled_statement
@@ -521,7 +523,7 @@ class MATParser ( Parser ):
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     self.state = 84
-                    self.match(MATParser.PINNAME)
+                    self.match(MATParser.ID)
                     self.state = 85
                     self.match(MATParser.T__8) 
                 self.state = 90
@@ -929,8 +931,8 @@ class MATParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def PINNAME(self):
-            return self.getToken(MATParser.PINNAME, 0)
+        def ID(self):
+            return self.getToken(MATParser.ID, 0)
 
         def getRuleIndex(self):
             return MATParser.RULE_stmtgoto
@@ -955,7 +957,7 @@ class MATParser ( Parser ):
             self.state = 154
             self.match(MATParser.T__13)
             self.state = 155
-            self.match(MATParser.PINNAME)
+            self.match(MATParser.ID)
             self.state = 156
             self.match(MATParser.T__5)
         except RecognitionException as re:
@@ -974,8 +976,8 @@ class MATParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def PINNAME(self):
-            return self.getToken(MATParser.PINNAME, 0)
+        def ID(self):
+            return self.getToken(MATParser.ID, 0)
 
         def getRuleIndex(self):
             return MATParser.RULE_stmtcall
@@ -998,7 +1000,7 @@ class MATParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 158
-            self.match(MATParser.PINNAME)
+            self.match(MATParser.ID)
             self.state = 159
             self.match(MATParser.T__7)
             self.state = 160
@@ -1019,8 +1021,8 @@ class MATParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def PINNAME(self):
-            return self.getToken(MATParser.PINNAME, 0)
+        def ID(self):
+            return self.getToken(MATParser.ID, 0)
 
         def NUMBER(self, i:int=None):
             if i is None:
@@ -1053,7 +1055,7 @@ class MATParser ( Parser ):
             self.state = 163
             self.match(MATParser.T__15)
             self.state = 164
-            self.match(MATParser.PINNAME)
+            self.match(MATParser.ID)
             self.state = 165
             self.match(MATParser.T__2)
             self.state = 166
@@ -1082,8 +1084,8 @@ class MATParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def PINNAME(self):
-            return self.getToken(MATParser.PINNAME, 0)
+        def ID(self):
+            return self.getToken(MATParser.ID, 0)
 
         def NUMBER(self, i:int=None):
             if i is None:
@@ -1116,7 +1118,7 @@ class MATParser ( Parser ):
             self.state = 173
             self.match(MATParser.T__15)
             self.state = 174
-            self.match(MATParser.PINNAME)
+            self.match(MATParser.ID)
             self.state = 175
             self.match(MATParser.T__2)
             self.state = 176
@@ -1145,8 +1147,8 @@ class MATParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def PINNAME(self):
-            return self.getToken(MATParser.PINNAME, 0)
+        def ID(self):
+            return self.getToken(MATParser.ID, 0)
 
         def CHANNEL(self):
             return self.getToken(MATParser.CHANNEL, 0)
@@ -1172,7 +1174,7 @@ class MATParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 182
-            self.match(MATParser.PINNAME)
+            self.match(MATParser.ID)
             self.state = 183
             self.match(MATParser.T__8)
             self.state = 184
@@ -1193,8 +1195,8 @@ class MATParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def PINNAME(self):
-            return self.getToken(MATParser.PINNAME, 0)
+        def ID(self):
+            return self.getToken(MATParser.ID, 0)
 
         def CHANNEL(self, i:int=None):
             if i is None:
@@ -1224,7 +1226,7 @@ class MATParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 186
-            self.match(MATParser.PINNAME)
+            self.match(MATParser.ID)
             self.state = 187
             self.match(MATParser.T__8)
             self.state = 188
@@ -1257,8 +1259,8 @@ class MATParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def PINNAME(self):
-            return self.getToken(MATParser.PINNAME, 0)
+        def ID(self):
+            return self.getToken(MATParser.ID, 0)
 
         def NUMBER(self):
             return self.getToken(MATParser.NUMBER, 0)
@@ -1284,7 +1286,7 @@ class MATParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 196
-            self.match(MATParser.PINNAME)
+            self.match(MATParser.ID)
             self.state = 197
             self.match(MATParser.T__18)
             self.state = 198
@@ -1305,8 +1307,8 @@ class MATParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def PINNAME(self):
-            return self.getToken(MATParser.PINNAME, 0)
+        def ID(self):
+            return self.getToken(MATParser.ID, 0)
 
         def getRuleIndex(self):
             return MATParser.RULE_readexp
@@ -1329,7 +1331,7 @@ class MATParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 200
-            self.match(MATParser.PINNAME)
+            self.match(MATParser.ID)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)

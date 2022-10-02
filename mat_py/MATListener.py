@@ -8,12 +8,12 @@ else:
 # This class defines a complete listener for a parse tree produced by MATParser.
 class MATListener(ParseTreeListener):
 
-    # Enter a parse tree produced by MATParser#complete.
-    def enterComplete(self, ctx:MATParser.CompleteContext):
+    # Enter a parse tree produced by MATParser#start.
+    def enterStart(self, ctx:MATParser.StartContext):
         pass
 
-    # Exit a parse tree produced by MATParser#complete.
-    def exitComplete(self, ctx:MATParser.CompleteContext):
+    # Exit a parse tree produced by MATParser#start.
+    def exitStart(self, ctx:MATParser.StartContext):
         pass
 
 

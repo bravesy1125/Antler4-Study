@@ -6,15 +6,20 @@ pinmap
 }
 pingroups
 {
-    groupa : DIO0,DIO1,DIO2;
-    groupB : DIO95,DIO94,DIO2;
+    groupa : DIO0,DIO1,DIO2,DIO94;
+    groupB : DIO85,DIO94,DIO2;
     groupV : DIO0,DIO1,DIO2
 }
- 
+  
 
- 
+/* 
+multi-line comment -> skipped
+*/
+
+///single line comment -> skipped
+
 def functionwhatever123 ()
-{
+{ 
 asd:    set cs=0,clk=1;
     read cs,clk,enable;
 
@@ -50,3 +55,4 @@ def main ()
         functionwhatever123();
     }
 }
+EEEEEEEERRRRRRRRRRRRR  surprisingly no warning or error instead it stopped here anything after this would be ignored 
