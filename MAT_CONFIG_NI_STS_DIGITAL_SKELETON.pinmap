@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PinMap xmlns="http://www.ni.com/TestStand/SemiconductorModule/PinMap.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.5">
+	<Instruments>
+		<NIDigitalPatternInstrument name="HSD_6571_C1_S03" numberOfChannels="32" group="Digital" />
+		<NIDigitalPatternInstrument name="HSD_6571_C1_S04" numberOfChannels="32" group="Digital" />
+		<NIDigitalPatternInstrument name="HSD_6571_C1_S05" numberOfChannels="32" group="Digital" />
+	</Instruments>
+	<Pins>
+		<DUTPin name="DIO0" />
+		<DUTPin name="DIO1" />
+		<DUTPin name="DIO2" />
+		<DUTPin name="DIO3" />
+		<DUTPin name="DIO4" />
+		<DUTPin name="DIO5" />
+		<DUTPin name="DIO6" />
+		<DUTPin name="DIO7" />
+		<DUTPin name="DIO8" />
+		<DUTPin name="DIO9" />
+		<DUTPin name="DIO10" />
+		<DUTPin name="DIO11" />
+		<DUTPin name="DIO12" />
+		<DUTPin name="DIO13" />
+		<DUTPin name="DIO14" />
+		<DUTPin name="DIO15" />
+		<DUTPin name="DIO16" />
+		<DUTPin name="DIO17" />
+		<DUTPin name="DIO18" />
+		<DUTPin name="DIO19" />
+		<DUTPin name="DIO20" />
+		<DUTPin name="DIO21" />
+		<DUTPin name="DIO22" />
+		<DUTPin name="DIO23" />
+		<DUTPin name="DIO24" />
+		<DUTPin name="DIO25" />
+		<DUTPin name="DIO26" />
+		<DUTPin name="DIO27" />
+		<DUTPin name="DIO28" />
+		<DUTPin name="DIO29" />
+		<DUTPin name="DIO30" />
+		<DUTPin name="DIO31" />
+		<DUTPin name="DIO32" />
+		<DUTPin name="DIO33" />
+		<DUTPin name="DIO34" />
+		<DUTPin name="DIO35" />
+		<DUTPin name="DIO36" />
+		<DUTPin name="DIO37" />
+		<DUTPin name="DIO38" />
+		<DUTPin name="DIO39" />
+		<DUTPin name="DIO40" />
+		<DUTPin name="DIO41" />
+		<DUTPin name="DIO42" />
+		<DUTPin name="DIO43" />
+		<DUTPin name="DIO44" />
+		<DUTPin name="DIO45" />
+		<DUTPin name="DIO46" />
+		<DUTPin name="DIO47" />
+		<DUTPin name="DIO48" />
+		<DUTPin name="DIO49" />
+		<DUTPin name="DIO50" />
+		<DUTPin name="DIO51" />
+		<DUTPin name="DIO52" />
+		<DUTPin name="DIO53" />
+		<DUTPin name="DIO54" />
+		<DUTPin name="DIO55" />
+		<DUTPin name="DIO56" />
+		<DUTPin name="DIO57" />
+		<DUTPin name="DIO58" />
+		<DUTPin name="DIO59" />
+		<DUTPin name="DIO60" />
+		<DUTPin name="DIO61" />
+		<DUTPin name="DIO62" />
+		<DUTPin name="DIO63" />
+		<DUTPin name="DIO64" />
+		<DUTPin name="DIO65" />
+		<DUTPin name="DIO66" />
+		<DUTPin name="DIO67" />
+		<DUTPin name="DIO68" />
+		<DUTPin name="DIO69" />
+		<DUTPin name="DIO70" />
+		<DUTPin name="DIO71" />
+		<DUTPin name="DIO72" />
+		<DUTPin name="DIO73" />
+		<DUTPin name="DIO74" />
+		<DUTPin name="DIO75" />
+		<DUTPin name="DIO76" />
+		<DUTPin name="DIO77" />
+		<DUTPin name="DIO78" />
+		<DUTPin name="DIO79" />
+		<DUTPin name="DIO80" />
+		<DUTPin name="DIO81" />
+		<DUTPin name="DIO82" />
+		<DUTPin name="DIO83" />
+		<DUTPin name="DIO84" />
+		<DUTPin name="DIO85" />
+		<DUTPin name="DIO86" />
+		<DUTPin name="DIO87" />
+		<DUTPin name="DIO88" />
+		<DUTPin name="DIO89" />
+		<DUTPin name="DIO90" />
+		<DUTPin name="DIO91" />
+		<DUTPin name="DIO92" />
+		<DUTPin name="DIO93" />
+		<DUTPin name="DIO94" />
+		<DUTPin name="DIO95" />	
+	</Pins>
+	<PinGroups />	
+	<Sites>
+		<Site siteNumber="0" />
+	</Sites>
+	<Connections>
+		<Connection pin="DIO0" siteNumber="0" instrument="HSD_6571_C1_S03" channel="0" />
+		<Connection pin="DIO1" siteNumber="0" instrument="HSD_6571_C1_S03" channel="1" />
+		<Connection pin="DIO2" siteNumber="0" instrument="HSD_6571_C1_S03" channel="2" />
+		<Connection pin="DIO3" siteNumber="0" instrument="HSD_6571_C1_S03" channel="3" />
+		<Connection pin="DIO4" siteNumber="0" instrument="HSD_6571_C1_S03" channel="4" />
+		<Connection pin="DIO5" siteNumber="0" instrument="HSD_6571_C1_S03" channel="5" />
+		<Connection pin="DIO6" siteNumber="0" instrument="HSD_6571_C1_S03" channel="6" />
+		<Connection pin="DIO7" siteNumber="0" instrument="HSD_6571_C1_S03" channel="7" />
+		<Connection pin="DIO8" siteNumber="0" instrument="HSD_6571_C1_S03" channel="8" />
+		<Connection pin="DIO9" siteNumber="0" instrument="HSD_6571_C1_S03" channel="9" />
+		<Connection pin="DIO10" siteNumber="0" instrument="HSD_6571_C1_S03" channel="10" />
+		<Connection pin="DIO11" siteNumber="0" instrument="HSD_6571_C1_S03" channel="11" />
+		<Connection pin="DIO12" siteNumber="0" instrument="HSD_6571_C1_S03" channel="12" />
+		<Connection pin="DIO13" siteNumber="0" instrument="HSD_6571_C1_S03" channel="13" />
+		<Connection pin="DIO14" siteNumber="0" instrument="HSD_6571_C1_S03" channel="14" />
+		<Connection pin="DIO15" siteNumber="0" instrument="HSD_6571_C1_S03" channel="15" />
+		<Connection pin="DIO16" siteNumber="0" instrument="HSD_6571_C1_S03" channel="16" />
+		<Connection pin="DIO17" siteNumber="0" instrument="HSD_6571_C1_S03" channel="17" />
+		<Connection pin="DIO18" siteNumber="0" instrument="HSD_6571_C1_S03" channel="18" />
+		<Connection pin="DIO19" siteNumber="0" instrument="HSD_6571_C1_S03" channel="19" />
+		<Connection pin="DIO20" siteNumber="0" instrument="HSD_6571_C1_S03" channel="20" />
+		<Connection pin="DIO21" siteNumber="0" instrument="HSD_6571_C1_S03" channel="21" />
+		<Connection pin="DIO22" siteNumber="0" instrument="HSD_6571_C1_S03" channel="22" />
+		<Connection pin="DIO23" siteNumber="0" instrument="HSD_6571_C1_S03" channel="23" />
+		<Connection pin="DIO24" siteNumber="0" instrument="HSD_6571_C1_S03" channel="24" />
+		<Connection pin="DIO25" siteNumber="0" instrument="HSD_6571_C1_S03" channel="25" />
+		<Connection pin="DIO26" siteNumber="0" instrument="HSD_6571_C1_S03" channel="26" />
+		<Connection pin="DIO27" siteNumber="0" instrument="HSD_6571_C1_S03" channel="27" />
+		<Connection pin="DIO28" siteNumber="0" instrument="HSD_6571_C1_S03" channel="28" />
+		<Connection pin="DIO29" siteNumber="0" instrument="HSD_6571_C1_S03" channel="29" />
+		<Connection pin="DIO30" siteNumber="0" instrument="HSD_6571_C1_S03" channel="30" />
+		<Connection pin="DIO31" siteNumber="0" instrument="HSD_6571_C1_S03" channel="31" />
+		<Connection pin="DIO32" siteNumber="0" instrument="HSD_6571_C1_S04" channel="0" />
+		<Connection pin="DIO33" siteNumber="0" instrument="HSD_6571_C1_S04" channel="1" />
+		<Connection pin="DIO34" siteNumber="0" instrument="HSD_6571_C1_S04" channel="2" />
+		<Connection pin="DIO35" siteNumber="0" instrument="HSD_6571_C1_S04" channel="3" />
+		<Connection pin="DIO36" siteNumber="0" instrument="HSD_6571_C1_S04" channel="4" />
+		<Connection pin="DIO37" siteNumber="0" instrument="HSD_6571_C1_S04" channel="5" />
+		<Connection pin="DIO38" siteNumber="0" instrument="HSD_6571_C1_S04" channel="6" />
+		<Connection pin="DIO39" siteNumber="0" instrument="HSD_6571_C1_S04" channel="7" />
+		<Connection pin="DIO40" siteNumber="0" instrument="HSD_6571_C1_S04" channel="8" />
+		<Connection pin="DIO41" siteNumber="0" instrument="HSD_6571_C1_S04" channel="9" />
+		<Connection pin="DIO42" siteNumber="0" instrument="HSD_6571_C1_S04" channel="10" />
+		<Connection pin="DIO43" siteNumber="0" instrument="HSD_6571_C1_S04" channel="11" />
+		<Connection pin="DIO44" siteNumber="0" instrument="HSD_6571_C1_S04" channel="12" />
+		<Connection pin="DIO45" siteNumber="0" instrument="HSD_6571_C1_S04" channel="13" />
+		<Connection pin="DIO46" siteNumber="0" instrument="HSD_6571_C1_S04" channel="14" />
+		<Connection pin="DIO47" siteNumber="0" instrument="HSD_6571_C1_S04" channel="15" />
+		<Connection pin="DIO48" siteNumber="0" instrument="HSD_6571_C1_S04" channel="16" />
+		<Connection pin="DIO49" siteNumber="0" instrument="HSD_6571_C1_S04" channel="17" />
+		<Connection pin="DIO50" siteNumber="0" instrument="HSD_6571_C1_S04" channel="18" />
+		<Connection pin="DIO51" siteNumber="0" instrument="HSD_6571_C1_S04" channel="19" />
+		<Connection pin="DIO52" siteNumber="0" instrument="HSD_6571_C1_S04" channel="20" />
+		<Connection pin="DIO53" siteNumber="0" instrument="HSD_6571_C1_S04" channel="21" />
+		<Connection pin="DIO54" siteNumber="0" instrument="HSD_6571_C1_S04" channel="22" />
+		<Connection pin="DIO55" siteNumber="0" instrument="HSD_6571_C1_S04" channel="23" />
+		<Connection pin="DIO56" siteNumber="0" instrument="HSD_6571_C1_S04" channel="24" />
+		<Connection pin="DIO57" siteNumber="0" instrument="HSD_6571_C1_S04" channel="25" />
+		<Connection pin="DIO58" siteNumber="0" instrument="HSD_6571_C1_S04" channel="26" />
+		<Connection pin="DIO59" siteNumber="0" instrument="HSD_6571_C1_S04" channel="27" />
+		<Connection pin="DIO60" siteNumber="0" instrument="HSD_6571_C1_S04" channel="28" />
+		<Connection pin="DIO61" siteNumber="0" instrument="HSD_6571_C1_S04" channel="29" />
+		<Connection pin="DIO62" siteNumber="0" instrument="HSD_6571_C1_S04" channel="30" />
+		<Connection pin="DIO63" siteNumber="0" instrument="HSD_6571_C1_S04" channel="31" />
+		<Connection pin="DIO64" siteNumber="0" instrument="HSD_6571_C1_S05" channel="0" />
+		<Connection pin="DIO65" siteNumber="0" instrument="HSD_6571_C1_S05" channel="1" />
+		<Connection pin="DIO66" siteNumber="0" instrument="HSD_6571_C1_S05" channel="2" />
+		<Connection pin="DIO67" siteNumber="0" instrument="HSD_6571_C1_S05" channel="3" />
+		<Connection pin="DIO68" siteNumber="0" instrument="HSD_6571_C1_S05" channel="4" />
+		<Connection pin="DIO69" siteNumber="0" instrument="HSD_6571_C1_S05" channel="5" />
+		<Connection pin="DIO70" siteNumber="0" instrument="HSD_6571_C1_S05" channel="6" />
+		<Connection pin="DIO71" siteNumber="0" instrument="HSD_6571_C1_S05" channel="7" />
+		<Connection pin="DIO72" siteNumber="0" instrument="HSD_6571_C1_S05" channel="8" />
+		<Connection pin="DIO73" siteNumber="0" instrument="HSD_6571_C1_S05" channel="9" />
+		<Connection pin="DIO74" siteNumber="0" instrument="HSD_6571_C1_S05" channel="10" />
+		<Connection pin="DIO75" siteNumber="0" instrument="HSD_6571_C1_S05" channel="11" />
+		<Connection pin="DIO76" siteNumber="0" instrument="HSD_6571_C1_S05" channel="12" />
+		<Connection pin="DIO77" siteNumber="0" instrument="HSD_6571_C1_S05" channel="13" />
+		<Connection pin="DIO78" siteNumber="0" instrument="HSD_6571_C1_S05" channel="14" />
+		<Connection pin="DIO79" siteNumber="0" instrument="HSD_6571_C1_S05" channel="15" />
+		<Connection pin="DIO80" siteNumber="0" instrument="HSD_6571_C1_S05" channel="16" />
+		<Connection pin="DIO81" siteNumber="0" instrument="HSD_6571_C1_S05" channel="17" />
+		<Connection pin="DIO82" siteNumber="0" instrument="HSD_6571_C1_S05" channel="18" />
+		<Connection pin="DIO83" siteNumber="0" instrument="HSD_6571_C1_S05" channel="19" />
+		<Connection pin="DIO84" siteNumber="0" instrument="HSD_6571_C1_S05" channel="20" />
+		<Connection pin="DIO85" siteNumber="0" instrument="HSD_6571_C1_S05" channel="21" />
+		<Connection pin="DIO86" siteNumber="0" instrument="HSD_6571_C1_S05" channel="22" />
+		<Connection pin="DIO87" siteNumber="0" instrument="HSD_6571_C1_S05" channel="23" />
+		<Connection pin="DIO88" siteNumber="0" instrument="HSD_6571_C1_S05" channel="24" />
+		<Connection pin="DIO89" siteNumber="0" instrument="HSD_6571_C1_S05" channel="25" />
+		<Connection pin="DIO90" siteNumber="0" instrument="HSD_6571_C1_S05" channel="26" />
+		<Connection pin="DIO91" siteNumber="0" instrument="HSD_6571_C1_S05" channel="27" />
+		<Connection pin="DIO92" siteNumber="0" instrument="HSD_6571_C1_S05" channel="28" />
+		<Connection pin="DIO93" siteNumber="0" instrument="HSD_6571_C1_S05" channel="29" />
+		<Connection pin="DIO94" siteNumber="0" instrument="HSD_6571_C1_S05" channel="30" />
+		<Connection pin="DIO95" siteNumber="0" instrument="HSD_6571_C1_S05" channel="31" />
+	</Connections>
+</PinMap>

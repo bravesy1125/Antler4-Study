@@ -26,12 +26,12 @@ class MATListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MATParser#defpinmap.
-    def enterDefpinmap(self, ctx:MATParser.DefpinmapContext):
+    # Enter a parse tree produced by MATParser#defpinmaps.
+    def enterDefpinmaps(self, ctx:MATParser.DefpinmapsContext):
         pass
 
-    # Exit a parse tree produced by MATParser#defpinmap.
-    def exitDefpinmap(self, ctx:MATParser.DefpinmapContext):
+    # Exit a parse tree produced by MATParser#defpinmaps.
+    def exitDefpinmaps(self, ctx:MATParser.DefpinmapsContext):
         pass
 
 
@@ -41,6 +41,24 @@ class MATListener(ParseTreeListener):
 
     # Exit a parse tree produced by MATParser#defpingroups.
     def exitDefpingroups(self, ctx:MATParser.DefpingroupsContext):
+        pass
+
+
+    # Enter a parse tree produced by MATParser#deftimeset.
+    def enterDeftimeset(self, ctx:MATParser.DeftimesetContext):
+        pass
+
+    # Exit a parse tree produced by MATParser#deftimeset.
+    def exitDeftimeset(self, ctx:MATParser.DeftimesetContext):
+        pass
+
+
+    # Enter a parse tree produced by MATParser#defvoltagelevels.
+    def enterDefvoltagelevels(self, ctx:MATParser.DefvoltagelevelsContext):
+        pass
+
+    # Exit a parse tree produced by MATParser#defvoltagelevels.
+    def exitDefvoltagelevels(self, ctx:MATParser.DefvoltagelevelsContext):
         pass
 
 
@@ -68,6 +86,15 @@ class MATListener(ParseTreeListener):
 
     # Exit a parse tree produced by MATParser#stmt.
     def exitStmt(self, ctx:MATParser.StmtContext):
+        pass
+
+
+    # Enter a parse tree produced by MATParser#stmttimeset.
+    def enterStmttimeset(self, ctx:MATParser.StmttimesetContext):
+        pass
+
+    # Exit a parse tree produced by MATParser#stmttimeset.
+    def exitStmttimeset(self, ctx:MATParser.StmttimesetContext):
         pass
 
 
@@ -158,6 +185,24 @@ class MATListener(ParseTreeListener):
 
     # Exit a parse tree produced by MATParser#pingroup.
     def exitPingroup(self, ctx:MATParser.PingroupContext):
+        pass
+
+
+    # Enter a parse tree produced by MATParser#timeset.
+    def enterTimeset(self, ctx:MATParser.TimesetContext):
+        pass
+
+    # Exit a parse tree produced by MATParser#timeset.
+    def exitTimeset(self, ctx:MATParser.TimesetContext):
+        pass
+
+
+    # Enter a parse tree produced by MATParser#voltagelevel.
+    def enterVoltagelevel(self, ctx:MATParser.VoltagelevelContext):
+        pass
+
+    # Exit a parse tree produced by MATParser#voltagelevel.
+    def exitVoltagelevel(self, ctx:MATParser.VoltagelevelContext):
         pass
 
 

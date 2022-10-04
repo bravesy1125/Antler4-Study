@@ -6,3 +6,4 @@ antlr4 -Dlanguage=Python3 MAT.g4 -o mat_py
 python main.py mattest.mat
 ::taskkill /im java.exe /f
 ::start /b grun MAT start -gui mattest.mat
+C:\\"Program Files"\\"National Instruments"\\"Digital Pattern Compiler"\\DigitalPatternCompiler.exe -pinmap __TMP.pinmap __TMP.digipatsrc

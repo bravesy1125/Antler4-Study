@@ -2,9 +2,17 @@ grammar MAT;
 
 start: defs+;
 
-defs: defpinmap | defpingroups | deffunc;
-defpinmap: 'pinmap' '{' map (',' map)* '}';
+defs:
+	defpinmaps
+	| defpingroups
+	| deffunc
+	| deftimeset
+	| defvoltagelevels;
+defpinmaps: 'pinmaps' '{' map (',' map)* '}';
 defpingroups: 'pingroups' '{' pingroup (';' pingroup)* '}';
+deftimeset: 'timeset' '{' timeset (';' timeset)* '}';
+defvoltagelevels:
+	'voltagelevels' '{' voltagelevel (';' voltagelevel)* '}';
 deffunc: 'def' ID '()' '{' (labeled_statement)* '}';
 
 labeled_statement: (ID ':')* stmt;
@@ -16,19 +24,24 @@ stmt:
 	| stmtgoto
 	| stmtcall
 	| stmtinc
-	| stmtdec;
+	| stmtdec
+	| stmttimeset;
 
+stmttimeset: 'timeset' ID ';';
 stmtset: 'set' setexp (',' setexp)* ';';
 stmtread: 'read' readexp (',' readexp)* ';';
 stmtif: 'if' setexp (',' setexp)* '{' (labeled_statement)* '}';
 stmtloop: 'loop' NUMBER '{' (labeled_statement)* '}';
 stmtgoto: 'goto' ID ';';
 stmtcall: ID '()' ';';
-stmtinc: 'inc' '(' ID ',' NUMBER ':' NUMBER ')' ';';
-stmtdec: 'dec' '(' ID ',' NUMBER ':' NUMBER ')' ';';
+stmtinc: 'inc' ID ',' NUMBER ':' NUMBER ';';
+stmtdec: 'dec' ID ',' NUMBER ':' NUMBER ';';
 
 map: ID ':' CHANNEL;
 pingroup: ID ':' CHANNEL (',' CHANNEL)*;
+timeset: ID ':' FLOATNUMBER 's';
+voltagelevel:
+	ID ':' ID '=' FLOATNUMBER (',' ID '=' FLOATNUMBER)*;
 setexp: ID '=' NUMBER;
 readexp: ID;
 
@@ -132,6 +145,7 @@ CHANNEL:
 ID:
 	[a-zA-Z]+ [a-zA-Z0-9_]*; // Define token INT as one or more digits
 NUMBER: [0-9]+;
+FLOATNUMBER: [0-9]+ '.' [0-9]+;
 
 WS: [ \t\r\n]+ -> skip; // Define whitespace rule, toss it out
 LINE_COMMENT:

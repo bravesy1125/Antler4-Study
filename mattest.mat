@@ -1,14 +1,26 @@
-pinmap
+pinmaps
 {
     cs:DIO2,
     clk:DIO1,
-    enable:DIO1
+    enable:DIO5
 }
 pingroups
 {
-    groupa : DIO0,DIO1,DIO2,DIO94;
-    groupB : DIO85,DIO94,DIO2;
-    groupV : DIO0,DIO1,DIO2
+    pgroup0 : DIO11,DIO22,DIO33,DIO44;
+    pgroup1 : DIO85,DIO94,DIO84,DIO83;
+    pgroup2 : DIO55,DIO66,DIO77,DIO88
+}
+
+timeset
+{
+    tset0 : 10.555 s;
+    tset1 : 0.00000002 s
+}
+
+voltagelevels
+{
+    cs : vil=0.0,vih=3.3,vol=1.6,voh=1.7,vterm=2.0;
+    pgroup0 : vil=0.0,vih=3.3,vol=1.6,voh=1.7,vterm=2.0
 }
   
 
@@ -16,43 +28,46 @@ pingroups
 multi-line comment -> skipped
 */
 
-///single line comment -> skipped
+//single line comment -> skipped
 
 def functionwhatever123 ()
 { 
-asd:    set cs=0,clk=1;
-    read cs,clk,enable;
-
-    if cs=1,clk=0{
-    set cs=0,clk=1;
-    goto labbbbbbb;
+    timeset tset0 ;
+    set cs=0,clk=1,pgroup0=1010;
+    read cs,clk;
+    functionwhatever123();
+    if cs=1,clk=0
+    {
+        set cs=1,clk=0;
+        goto label_example;
     }
-    
+label_example:    
     if cs=1,clk=0{ 
-    read cs,clk,enable;
+        read cs,clk;
     } 
-    goto labbbbbbb;
 
-  
+
     loop 6
     {
-    read cs,clk,enable;
-    goto asd;
-    functionwhatever123();
+        read cs,clk;
+        //goto label_example;
+        
     } 
 
-    inc(pingroup1,1:20);
+    inc pgroup0,1:110;
 
-    dec(pingroup1,10:5);
+    dec pgroup1,1100:10;
 }
 
 def main ()
 {
+    timeset tset1 ;
     loop 16 
     {
-        read cs,clk,enable;
-        goto addddd;
+        //goto label_example;
+        read cs,clk;
+        
         functionwhatever123();
     }
 }
-EEEEEEEERRRRRRRRRRRRR  surprisingly no warning or error instead it stopped here anything after this would be ignored 
+EEEEEEEERRRRRRRRRRRRR  surprisingly no warning or error instead however it stopped here anything after this would be ignored 
