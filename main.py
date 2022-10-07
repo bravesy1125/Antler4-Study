@@ -15,7 +15,8 @@ voltagelevels = {}
 
 vector_table = []
 current_tset = ''
-
+if__end__label_counter =  0
+if__end__label_stack = []
 class listener(MATListener):     
   
     
@@ -82,11 +83,18 @@ class listener(MATListener):
 
     # Enter a parse tree produced by MATParser#deffunc.
     def enterDeffunc(self, ctx:MATParser.DeffuncContext):
-        vector_table.append(ctx.children[1].symbol.text + ':')
+        vector_table.append(f'\n//////////////define function {ctx.children[1].symbol.text }///////////////')
+        vector = [f'   -    '] #timeset
+        for i in pinmaps_groups:
+            vector.append('-    ')
+        vector_table.append(f'{ctx.children[1].symbol.text}: ' + ''.join(vector) + ';')
 
     # Exit a parse tree produced by MATParser#deffunc.
     def exitDeffunc(self, ctx:MATParser.DeffuncContext):
-        print(f"OK,Now {sys._getframe().f_code.co_name} at line:{sys._getframe().f_lineno}")
+        vector = [f'   {current_tset}    '] #timeset
+        for i in pinmaps_groups:
+            vector.append('-    ')
+        vector_table.append(f'return' + ''.join(vector) + ';')
 
 
     # Enter a parse tree produced by MATParser#labeled_statement.
@@ -117,7 +125,11 @@ class listener(MATListener):
 
     # Enter a parse tree produced by MATParser#stmtset.
     def enterStmtset(self, ctx:MATParser.StmtsetContext):
-        vector = [f'   {current_tset}    '] #timeset
+        vector = []
+        
+        
+        
+        vector.append(f'   {current_tset} ') #timeset
         for i in pinmaps_groups:
             vector.append('-    ')
 
@@ -126,6 +138,8 @@ class listener(MATListener):
                 if ctx.children[i].children[0].symbol.text == pinmaps_groups[count]:
                     vector[count+1] = (bin(int(ctx.children[i].children[2].symbol.text,2)))[2:] + '    '
 
+        if isinstance(ctx.parentCtx , MATParser.StmtrepeatContext):
+            vector.insert(0,f'repeat({ctx.parentCtx.children[1].symbol.text}) ') #timeset
         vector_table.append(''.join(vector) + ';')
 
     # Exit a parse tree produced by MATParser#stmtset.
@@ -135,7 +149,20 @@ class listener(MATListener):
 
     # Enter a parse tree produced by MATParser#stmtread.
     def enterStmtread(self, ctx:MATParser.StmtreadContext):
-        print(f"OK,Now {sys._getframe().f_code.co_name} at line:{sys._getframe().f_lineno}")
+        vector = []
+        if isinstance(ctx.parentCtx , MATParser.StmtrepeatContext):
+            vector.append(f'repeat({ctx.parentCtx.children[1].symbol.text}) ') #timeset
+        
+        vector.append(f'   {current_tset} ') #timeset
+        for i in pinmaps_groups:
+            vector.append('-    ')
+
+        for i in range(1,len(ctx.children),2):
+            for count, value in enumerate(pinmaps_groups):
+                if ctx.children[i].children[0].symbol.text == pinmaps_groups[count]:
+                    vector[count+2] = 'V    '
+
+        vector_table.append(''.join(vector) + ';')
 
     # Exit a parse tree produced by MATParser#stmtread.
     def exitStmtread(self, ctx:MATParser.StmtreadContext):
@@ -144,21 +171,73 @@ class listener(MATListener):
 
     # Enter a parse tree produced by MATParser#stmtif.
     def enterStmtif(self, ctx:MATParser.StmtifContext):
-        print(f"OK,Now {sys._getframe().f_code.co_name} at line:{sys._getframe().f_lineno}")
+        vector_table.append(f'\n//define if statement //')
+        vector = []  
+        vector.append(f'match {current_tset} ') #timeset
+        for i in pinmaps_groups:
+            vector.append('-    ')
+
+        for i in range(1,len(ctx.children),2):
+            if isinstance(ctx.children[i] , MATParser.SetexpContext):
+                for count, value in enumerate(pinmaps_groups):
+                    if ctx.children[i].children[0].symbol.text == pinmaps_groups[count]:
+                        if(ctx.children[i].children[2].symbol.text == '0'):
+                            vector[count+1] = '  L    '
+                        else:
+                            vector[count+1] = '  H    '
+
+        vector_table.append(''.join(vector) + ';')
+        
+        vector = []  
+        vector.append(f'   {current_tset} ') #timeset
+        for i in pinmaps_groups:
+            vector.append('-    ')
+        vector_table.append('repeat(79) ' + ''.join(vector) + ';')
+
+        global if__end__label_counter
+        vector_table.append(f'jump_if(!matched, __end__label{if__end__label_counter})' + ''.join(vector) + ';')  
+        if__end__label_stack.append(if__end__label_counter)
+        if__end__label_counter = if__end__label_counter + 1 
 
     # Exit a parse tree produced by MATParser#stmtif.
     def exitStmtif(self, ctx:MATParser.StmtifContext):
+        vector = []  
+        vector.append(f'   {current_tset} ') #timeset
+        for i in pinmaps_groups:
+            vector.append('-    ')
+        vector_table.append(f'__end__label{if__end__label_stack.pop()}:' + ''.join(vector) + ';\n')
+
+
+    # Enter a parse tree produced by MATParser#stmtrepeat.
+    def enterStmtrepeat(self, ctx:MATParser.StmtrepeatContext):
+        vector_table.append(f'\n//define repeat statement //')
         print(f"OK,Now {sys._getframe().f_code.co_name} at line:{sys._getframe().f_lineno}")
 
+    # Exit a parse tree produced by MATParser#stmtrepeat.
+    def exitStmtrepeat(self, ctx:MATParser.StmtrepeatContext):
+        print(f"OK,Now {sys._getframe().f_code.co_name} at line:{sys._getframe().f_lineno}")
 
-    # Enter a parse tree produced by MATParser#stmtloop.
+     # Enter a parse tree produced by MATParser#stmtloop.
     def enterStmtloop(self, ctx:MATParser.StmtloopContext):
-        print(f"OK,Now {sys._getframe().f_code.co_name} at line:{sys._getframe().f_lineno}")
+        vector_table.append(f'\n//define loop statement //')
+        vector = []  
+        vector.append(f'   {current_tset} ') #timeset
+        for i in pinmaps_groups:
+            vector.append('-    ')
+        vector_table.append(f'\nset_loop({ctx.children[1].symbol.text}) ' + ''.join(vector) + ';')
+
+        global if__end__label_counter
+        vector_table.append(f'__end__label{if__end__label_counter}:' + ''.join(vector) + ';')  
+        if__end__label_stack.append(if__end__label_counter)
+        if__end__label_counter = if__end__label_counter + 1 
 
     # Exit a parse tree produced by MATParser#stmtloop.
     def exitStmtloop(self, ctx:MATParser.StmtloopContext):
-        print(f"OK,Now {sys._getframe().f_code.co_name} at line:{sys._getframe().f_lineno}")
-
+        vector = []  
+        vector.append(f'   {current_tset} ') #timeset
+        for i in pinmaps_groups:
+            vector.append('-    ')
+        vector_table.append(f'end_loop(__end__label{if__end__label_stack.pop()})' + ''.join(vector) + ';\n')
 
     # Enter a parse tree produced by MATParser#stmtgoto.
     def enterStmtgoto(self, ctx:MATParser.StmtgotoContext):
@@ -174,9 +253,10 @@ class listener(MATListener):
 
     # Enter a parse tree produced by MATParser#stmtcall.
     def enterStmtcall(self, ctx:MATParser.StmtcallContext):
-        vector = [f'   {current_tset}    '] #timeset
+        vector = [f'{current_tset}    '] #timeset
         for i in pinmaps_groups:
             vector.append('-    ')
+        vector_table.append(f''.join(vector) + ';')
         vector_table.append(f'call({ctx.children[0].symbol.text})' + ''.join(vector) + ';')
 
     # Exit a parse tree produced by MATParser#stmtcall.
@@ -323,13 +403,13 @@ if __name__ == '__main__':
 
 
     ###########################################################      digipatsrc -> digipat ################################
-    jumpmai_start = 'jump(main)    -    '
+    jumpmain_start = 'call(main)    -    '
     halt_end = 'halt    -    '
     for i in pinmaps_groups:
             halt_end = halt_end + '-    '
-            jumpmai_start = jumpmai_start + '-    '
-    vector_table.insert(0,jumpmai_start + ';') 
-    vector_table.append(halt_end + ';')
+            jumpmain_start = jumpmain_start + '-    '
+    vector_table.insert(0,jumpmain_start + ';') 
+    vector_table.insert(1,halt_end + ';')
     vector_table.append('')
     with open('./__TMP.digipatsrc', 'w') as fp:
 

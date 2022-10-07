@@ -5,19 +5,45 @@ timeset tset0,tset1;
 
 pattern mattest(cs,clk,enable,pgroup0,pgroup1,pgroup2)
 {
-jump(main)    -    -    -    -    -    -    -    ;
-functionwhatever123:
-   tset0    0    1    -    1010    -    -    ;
-call(functionwhatever123)   tset0    -    -    -    -    -    -    ;
-   tset0    1    0    -    -    -    -    ;
+call(main)    -    -    -    -    -    -    -    ;
+halt    -    -    -    -    -    -    -    ;
+
+//////////////define function functionwhatever123///////////////
+functionwhatever123:    -    -    -    -    -    -    -    ;
+   tset0 0    1    -    1010    -    -    ;
+   tset0 -    V    V    -    -    -    ;
+
+//define if statement //
+match tset0   H      L    -    -    -    -    ;
+repeat(79)    tset0 -    -    -    -    -    -    ;
+jump_if(!matched, __end__label0)   tset0 -    -    -    -    -    -    ;
+   tset0 1    0    -    -    -    -    ;
+
+//define if statement //
+match tset0   H      L    -    -    -    -    ;
+repeat(79)    tset0 -    -    -    -    -    -    ;
+jump_if(!matched, __end__label1)   tset0 -    -    -    -    -    -    ;
+   tset0 -    V    V    -    -    -    ;
+__end__label1:   tset0 -    -    -    -    -    -    ;
+
+__end__label0:   tset0 -    -    -    -    -    -    ;
+
+
+//define if statement //
+match tset0   H      L    -    -    -    -    ;
+repeat(79)    tset0 -    -    -    -    -    -    ;
+jump_if(!matched, __end__label2)   tset0 -    -    -    -    -    -    ;
+   tset0 -    V    V    -    -    -    ;
+__end__label2:   tset0 -    -    -    -    -    -    ;
+
 jump(label_example)   tset0    -    -    -    -    -    -    ;
-label_example:
    tset0    -    -    -    0001    -    -    ;
    tset0    -    -    -    0010    -    -    ;
    tset0    -    -    -    0011    -    -    ;
    tset0    -    -    -    0100    -    -    ;
    tset0    -    -    -    0101    -    -    ;
    tset0    -    -    -    0110    -    -    ;
+label_example:
    tset0    -    -    -    -    1100    -    ;
    tset0    -    -    -    -    1011    -    ;
    tset0    -    -    -    -    1010    -    ;
@@ -27,7 +53,31 @@ label_example:
    tset0    -    -    -    -    0110    -    ;
    tset0    -    -    -    -    0101    -    ;
    tset0    -    -    -    -    0100    -    ;
-main:
-call(functionwhatever123)   tset1    -    -    -    -    -    -    ;
-halt    -    -    -    -    -    -    -    ;
+return   tset0    -    -    -    -    -    -    ;
+
+//////////////define function main///////////////
+main:    -    -    -    -    -    -    -    ;
+
+//define repeat statement //
+repeat(16)    tset1 1    0    -    -    -    -    ;
+tset1    -    -    -    -    -    -    ;
+call(functionwhatever123)tset1    -    -    -    -    -    -    ;
+
+//define loop statement //
+
+set_loop(1125)    tset1 -    -    -    -    -    -    ;
+__end__label3:   tset1 -    -    -    -    -    -    ;
+   tset1 1    0    -    -    -    -    ;
+   tset1 0    1    -    -    -    -    ;
+
+//define loop statement //
+
+set_loop(11)    tset1 -    -    -    -    -    -    ;
+__end__label4:   tset1 -    -    -    -    -    -    ;
+   tset1 0    -    1    -    -    -    ;
+end_loop(__end__label4)   tset1 -    -    -    -    -    -    ;
+
+end_loop(__end__label3)   tset1 -    -    -    -    -    -    ;
+
+return   tset1    -    -    -    -    -    -    ;
 }

@@ -119,7 +119,7 @@
 			<PinReference pin="DIO55"/>
 			<PinReference pin="DIO66"/>
 			<PinReference pin="DIO77"/>
-			<PinReference pin="DIO88"/>
+			<PinReference pin="DIO99"/>
 			</PinGroup>
 		</PinGroups>	
 	<Sites>

@@ -20,6 +20,7 @@ stmt:
 	stmtset
 	| stmtread
 	| stmtif
+	| stmtrepeat
 	| stmtloop
 	| stmtgoto
 	| stmtcall
@@ -30,12 +31,13 @@ stmt:
 stmttimeset: 'timeset' ID ';';
 stmtset: 'set' setexp (',' setexp)* ';';
 stmtread: 'read' readexp (',' readexp)* ';';
-stmtif: 'if' setexp (',' setexp)* '{' (labeled_statement)* '}';
-stmtloop: 'loop' NUMBER '{' (labeled_statement)* '}';
-stmtgoto: 'goto' ID ';';
-stmtcall: ID '()' ';';
 stmtinc: 'inc' ID ',' NUMBER ':' NUMBER ';';
 stmtdec: 'dec' ID ',' NUMBER ':' NUMBER ';';
+stmtgoto: 'goto' ID ';';
+stmtcall: ID '()' ';';
+stmtrepeat: 'repeat' NUMBER ':' (stmtset | stmtread);
+stmtloop: 'loop' NUMBER '{' (labeled_statement)* '}';
+stmtif: 'if' setexp (',' setexp)* '{' (labeled_statement)* '}';
 
 map: ID ':' CHANNEL;
 pingroup: ID ':' CHANNEL (',' CHANNEL)*;

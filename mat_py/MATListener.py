@@ -116,21 +116,21 @@ class MATListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MATParser#stmtif.
-    def enterStmtif(self, ctx:MATParser.StmtifContext):
+    # Enter a parse tree produced by MATParser#stmtinc.
+    def enterStmtinc(self, ctx:MATParser.StmtincContext):
         pass
 
-    # Exit a parse tree produced by MATParser#stmtif.
-    def exitStmtif(self, ctx:MATParser.StmtifContext):
+    # Exit a parse tree produced by MATParser#stmtinc.
+    def exitStmtinc(self, ctx:MATParser.StmtincContext):
         pass
 
 
-    # Enter a parse tree produced by MATParser#stmtloop.
-    def enterStmtloop(self, ctx:MATParser.StmtloopContext):
+    # Enter a parse tree produced by MATParser#stmtdec.
+    def enterStmtdec(self, ctx:MATParser.StmtdecContext):
         pass
 
-    # Exit a parse tree produced by MATParser#stmtloop.
-    def exitStmtloop(self, ctx:MATParser.StmtloopContext):
+    # Exit a parse tree produced by MATParser#stmtdec.
+    def exitStmtdec(self, ctx:MATParser.StmtdecContext):
         pass
 
 
@@ -152,21 +152,30 @@ class MATListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MATParser#stmtinc.
-    def enterStmtinc(self, ctx:MATParser.StmtincContext):
+    # Enter a parse tree produced by MATParser#stmtrepeat.
+    def enterStmtrepeat(self, ctx:MATParser.StmtrepeatContext):
         pass
 
-    # Exit a parse tree produced by MATParser#stmtinc.
-    def exitStmtinc(self, ctx:MATParser.StmtincContext):
+    # Exit a parse tree produced by MATParser#stmtrepeat.
+    def exitStmtrepeat(self, ctx:MATParser.StmtrepeatContext):
         pass
 
 
-    # Enter a parse tree produced by MATParser#stmtdec.
-    def enterStmtdec(self, ctx:MATParser.StmtdecContext):
+    # Enter a parse tree produced by MATParser#stmtloop.
+    def enterStmtloop(self, ctx:MATParser.StmtloopContext):
         pass
 
-    # Exit a parse tree produced by MATParser#stmtdec.
-    def exitStmtdec(self, ctx:MATParser.StmtdecContext):
+    # Exit a parse tree produced by MATParser#stmtloop.
+    def exitStmtloop(self, ctx:MATParser.StmtloopContext):
+        pass
+
+
+    # Enter a parse tree produced by MATParser#stmtif.
+    def enterStmtif(self, ctx:MATParser.StmtifContext):
+        pass
+
+    # Exit a parse tree produced by MATParser#stmtif.
+    def exitStmtif(self, ctx:MATParser.StmtifContext):
         pass
 
 

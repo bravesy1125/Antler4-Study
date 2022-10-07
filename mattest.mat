@@ -8,7 +8,7 @@ pingroups
 {
     pgroup0 : DIO11,DIO22,DIO33,DIO44;
     pgroup1 : DIO85,DIO94,DIO84,DIO83;
-    pgroup2 : DIO55,DIO66,DIO77,DIO88
+    pgroup2 : DIO55,DIO66,DIO77,DIO99
 }
 
 timeset
@@ -19,7 +19,7 @@ timeset
 
 voltagelevels
 {
-    cs : vil=0.0,vih=3.3,vol=1.6,voh=1.7,vterm=2.0;
+    cs : vil=0.0,vih=3.3,vol=1.6,voh=1.7,vtermm=2.0;
     pgroup0 : vil=0.0,vih=3.3,vol=1.6,voh=1.7,vterm=2.0
 }
   
@@ -35,39 +35,46 @@ def functionwhatever123 ()
     timeset tset0 ;
     set cs=0,clk=1,pgroup0=1010;
     read cs,clk;
-    functionwhatever123();
+    
     if cs=1,clk=0
     {
         set cs=1,clk=0;
-        goto label_example;
+        if cs=1,clk=0
+        { 
+            read cs,clk;
+        }  
     }
-label_example:    
+  
     if cs=1,clk=0{ 
         read cs,clk;
     } 
 
+    goto label_example;
 
-    loop 6
-    {
-        read cs,clk;
-        //goto label_example;
-        
-    } 
 
     inc pgroup0,1:110;
-
+label_example:  
     dec pgroup1,1100:10;
+
 }
 
 def main ()
 {
     timeset tset1 ;
-    loop 16 
+    
+    repeat 16 : set cs=1,clk=0;
+    //set cs=1,clk=0;
+    functionwhatever123();
+
+    loop 1125
     {
-        //goto label_example;
-        read cs,clk;
-        
-        functionwhatever123();
+        set cs=1,clk=0;
+        set cs=0,clk=1;
+
+        loop 11
+        {
+            set enable=1,cs=0;
+        }
     }
 }
 EEEEEEEERRRRRRRRRRRRR  surprisingly no warning or error instead however it stopped here anything after this would be ignored 
