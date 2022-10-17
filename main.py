@@ -195,7 +195,11 @@ class listener(MATListener):
         vector_table.append('repeat(79) ' + ''.join(vector) + ';')
 
         global if__end__label_counter
-        vector_table.append(f'jump_if(!matched, __end__label{if__end__label_counter})' + ''.join(vector) + ';')  
+        if isinstance(ctx.children[-1] , MATParser.StmtelseContext): #if there is 'else' statement, jump to there. if not, jump to the end
+          vector_table.append(f'jump_if(!matched, __else__label{if__end__label_counter})' + ''.join(vector) + ';')  
+        else:
+          vector_table.append(f'jump_if(!matched, __end__label{if__end__label_counter})' + ''.join(vector) + ';')  
+
         if__end__label_stack.append(if__end__label_counter)
         if__end__label_counter = if__end__label_counter + 1 
 
@@ -207,6 +211,19 @@ class listener(MATListener):
             vector.append('-    ')
         vector_table.append(f'__end__label{if__end__label_stack.pop()}:' + ''.join(vector) + ';\n')
 
+    # Enter a parse tree produced by MATParser#stmtelse.
+    def enterStmtelse(self, ctx:MATParser.StmtelseContext):
+        vector_table.append(f'\n  //else statement in if statement//')
+        vector = []  
+        vector.append(f'   {current_tset} ') #timeset
+        for i in pinmaps_groups:
+            vector.append('-    ')
+        vector_table.append(f'jump_if(!matched, __end__label{if__end__label_stack[-1]})' + ''.join(vector) + ';') 
+        vector_table.append(f'__else__label{if__end__label_stack[-1]}:' + ''.join(vector) + ';\n') 
+
+    # Exit a parse tree produced by MATParser#stmtelse.
+    def exitStmtelse(self, ctx:MATParser.StmtelseContext):
+        pass
 
     # Enter a parse tree produced by MATParser#stmtrepeat.
     def enterStmtrepeat(self, ctx:MATParser.StmtrepeatContext):

@@ -16,7 +16,7 @@ functionwhatever123:    -    -    -    -    -    -    -    ;
 //define if statement //
 match tset0   H      L    -    -    -    -    ;
 repeat(79)    tset0 -    -    -    -    -    -    ;
-jump_if(!matched, __end__label0)   tset0 -    -    -    -    -    -    ;
+jump_if(!matched, __else__label0)   tset0 -    -    -    -    -    -    ;
    tset0 1    0    -    -    -    -    ;
 
 //define if statement //
@@ -26,6 +26,12 @@ jump_if(!matched, __end__label1)   tset0 -    -    -    -    -    -    ;
    tset0 -    V    V    -    -    -    ;
 __end__label1:   tset0 -    -    -    -    -    -    ;
 
+
+  //else statement in if statement//
+jump_if(!matched, __end__label0)   tset0 -    -    -    -    -    -    ;
+__else__label0:   tset0 -    -    -    -    -    -    ;
+
+   tset0 -    -    1    -    -    -    ;
 __end__label0:   tset0 -    -    -    -    -    -    ;
 
 

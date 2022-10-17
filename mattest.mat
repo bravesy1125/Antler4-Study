@@ -8,7 +8,7 @@ pingroups
 {
     pgroup0 : DIO11,DIO22,DIO33,DIO44;
     pgroup1 : DIO85,DIO94,DIO84,DIO83;
-    pgroup2 : DIO55,DIO66,DIO77,DIO99
+    pgroup2 : DIO55,DIO66,DIO77,DIO88
 }
 
 timeset
@@ -43,6 +43,9 @@ def functionwhatever123 ()
         { 
             read cs,clk;
         }  
+    }
+    else{
+        //set enable=1;
     }
   
     if cs=1,clk=0{ 

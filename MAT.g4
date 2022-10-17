@@ -37,7 +37,11 @@ stmtgoto: 'goto' ID ';';
 stmtcall: ID '()' ';';
 stmtrepeat: 'repeat' NUMBER ':' (stmtset | stmtread);
 stmtloop: 'loop' NUMBER '{' (labeled_statement)* '}';
-stmtif: 'if' setexp (',' setexp)* '{' (labeled_statement)* '}';
+stmtif:
+	'if' setexp (',' setexp)* '{' (labeled_statement)* '}' (
+		stmtelse
+	)?;
+stmtelse: 'else' '{' (labeled_statement)* '}';
 
 map: ID ':' CHANNEL;
 pingroup: ID ':' CHANNEL (',' CHANNEL)*;
@@ -145,7 +149,7 @@ CHANNEL:
 	| 'DIO94'
 	| 'DIO95';
 ID:
-	[a-zA-Z]+ [a-zA-Z0-9_]*; // Define token INT as one or more digits
+	[a-zA-Z] [a-zA-Z0-9_]*; // Define token INT as one or more digits
 NUMBER: [0-9]+;
 FLOATNUMBER: [0-9]+ '.' [0-9]+;
 
