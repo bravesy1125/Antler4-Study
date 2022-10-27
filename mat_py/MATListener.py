@@ -188,6 +188,15 @@ class MATListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MATParser#stmtwhile.
+    def enterStmtwhile(self, ctx:MATParser.StmtwhileContext):
+        pass
+
+    # Exit a parse tree produced by MATParser#stmtwhile.
+    def exitStmtwhile(self, ctx:MATParser.StmtwhileContext):
+        pass
+
+
     # Enter a parse tree produced by MATParser#map.
     def enterMap(self, ctx:MATParser.MapContext):
         pass

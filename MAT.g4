@@ -26,7 +26,8 @@ stmt:
 	| stmtcall
 	| stmtinc
 	| stmtdec
-	| stmttimeset;
+	| stmttimeset
+	| stmtwhile;
 
 stmttimeset: 'timeset' ID ';';
 stmtset: 'set' setexp (',' setexp)* ';';
@@ -42,6 +43,8 @@ stmtif:
 		stmtelse
 	)?;
 stmtelse: 'else' '{' (labeled_statement)* '}';
+stmtwhile:
+	'while' setexp (',' setexp)* '{' (labeled_statement)* '}';
 
 map: ID ':' CHANNEL;
 pingroup: ID ':' CHANNEL (',' CHANNEL)*;

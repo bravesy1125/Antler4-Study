@@ -126,9 +126,7 @@ class listener(MATListener):
     # Enter a parse tree produced by MATParser#stmtset.
     def enterStmtset(self, ctx:MATParser.StmtsetContext):
         vector = []
-        
-        
-        
+            
         vector.append(f'   {current_tset} ') #timeset
         for i in pinmaps_groups:
             vector.append('-    ')
@@ -136,7 +134,7 @@ class listener(MATListener):
         for i in range(1,len(ctx.children),2):
             for count, value in enumerate(pinmaps_groups):
                 if ctx.children[i].children[0].symbol.text == pinmaps_groups[count]:
-                    vector[count+1] = (bin(int(ctx.children[i].children[2].symbol.text,2)))[2:] + '    '
+                    vector[count+1] = ctx.children[i].children[2].symbol.text + '    '
 
         if isinstance(ctx.parentCtx , MATParser.StmtrepeatContext):
             vector.insert(0,f'repeat({ctx.parentCtx.children[1].symbol.text}) ') #timeset
@@ -290,7 +288,8 @@ class listener(MATListener):
         for number in range( int(ctx.children[3].symbol.text,2), int(ctx.children[5].symbol.text,2) + 1):
                 for count, value in enumerate(pinmaps_groups):
                     if ctx.children[1].symbol.text == pinmaps_groups[count]:
-                        vector[count+1] = '{:0>4b}'.format(number) + '    '
+                        str_format = '{:0>' + str(len(ctx.children[5].symbol.text)) + 'b}'
+                        vector[count+1] = str_format.format(number) + '    '
                         vector_table.append(''.join(vector) + ';')
                         continue
         
@@ -306,10 +305,11 @@ class listener(MATListener):
         for i in pinmaps_groups:
             vector.append('-    ')
 
-        for number in range( int(ctx.children[3].symbol.text,2), int(ctx.children[5].symbol.text,2) + 1, -1):
+        for number in range( int(ctx.children[3].symbol.text,2), int(ctx.children[5].symbol.text,2) - 1, -1):
                 for count, value in enumerate(pinmaps_groups):
                     if ctx.children[1].symbol.text == pinmaps_groups[count]:
-                        vector[count+1] = '{:0>4b}'.format(number) + '    '
+                        str_format = '{:0>' + str(len(ctx.children[5].symbol.text)) + 'b}'
+                        vector[count+1] = str_format.format(number) + '    '
                         vector_table.append(''.join(vector) + ';')
                         continue
         

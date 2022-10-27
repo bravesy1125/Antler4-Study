@@ -55,9 +55,9 @@ def functionwhatever123 ()
     goto label_example;
 
 
-    inc pgroup0,1:110;
+    inc pgroup0,1:0110;
 label_example:  
-    dec pgroup1,1100:10;
+    dec pgroup1,1100:0010;
 
 }
 
@@ -78,6 +78,11 @@ def main ()
         {
             set enable=1,cs=0;
         }
+    }
+
+    while cs=1,clk=1
+    {
+       set cs=0,clk=0,pgroup0=0000;
     }
 }
 EEEEEEEERRRRRRRRRRRRR  surprisingly no warning or error instead however it stopped here anything after this would be ignored 
