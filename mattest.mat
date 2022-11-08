@@ -33,7 +33,7 @@ multi-line comment -> skipped
 def functionwhatever123 ()
 { 
     timeset tset0 ;
-    set cs=0,clk=1,pgroup0=1010;
+    set cs=0,clk=1,pgroup0=0010;
     read cs,clk;
     
     if cs=1,clk=0

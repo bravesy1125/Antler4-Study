@@ -328,7 +328,7 @@ class listener(MATListener):
         for number in range( int(ctx.children[3].symbol.text,2), int(ctx.children[5].symbol.text,2) + 1):
                 for count, value in enumerate(pinmaps_groups):
                     if ctx.children[1].symbol.text == pinmaps_groups[count]:
-                        str_format = '{:0>' + str(len(ctx.children[5].symbol.text)) + 'b}'
+                        str_format = '{:0>' + str(len(pingroups[ctx.children[1].symbol.text])) + 'b}'
                         vector[count+1] = str_format.format(number) + '    '
                         vector_table.append(''.join(vector) + ';')
                         continue
@@ -348,7 +348,7 @@ class listener(MATListener):
         for number in range( int(ctx.children[3].symbol.text,2), int(ctx.children[5].symbol.text,2) - 1, -1):
                 for count, value in enumerate(pinmaps_groups):
                     if ctx.children[1].symbol.text == pinmaps_groups[count]:
-                        str_format = '{:0>' + str(len(ctx.children[5].symbol.text)) + 'b}'
+                        str_format = '{:0>' + str(len(pingroups[ctx.children[1].symbol.text])) + 'b}'
                         vector[count+1] = str_format.format(number) + '    '
                         vector_table.append(''.join(vector) + ';')
                         continue
