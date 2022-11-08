@@ -45,7 +45,7 @@ def functionwhatever123 ()
         }  
     }
     else{
-        //set enable=1;
+        set enable=1;
     }
   
     if cs=1,clk=0{ 
@@ -85,4 +85,3 @@ def main ()
        set cs=0,clk=0,pgroup0=0000;
     }
 }
-EEEEEEEERRRRRRRRRRRRR  surprisingly no warning or error instead however it stopped here anything after this would be ignored 

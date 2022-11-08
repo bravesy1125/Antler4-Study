@@ -211,17 +211,57 @@ class listener(MATListener):
 
     # Enter a parse tree produced by MATParser#stmtelse.
     def enterStmtelse(self, ctx:MATParser.StmtelseContext):
-        vector_table.append(f'\n  //else statement in if statement//')
+        vector_table.append(f'//else statement in if statement//')
         vector = []  
         vector.append(f'   {current_tset} ') #timeset
         for i in pinmaps_groups:
             vector.append('-    ')
-        vector_table.append(f'jump_if(!matched, __end__label{if__end__label_stack[-1]})' + ''.join(vector) + ';') 
+        vector_table.append(f'jump(__end__label{if__end__label_stack[-1]})' + ''.join(vector) + ';') 
         vector_table.append(f'__else__label{if__end__label_stack[-1]}:' + ''.join(vector) + ';\n') 
 
     # Exit a parse tree produced by MATParser#stmtelse.
     def exitStmtelse(self, ctx:MATParser.StmtelseContext):
         pass
+
+    # Enter a parse tree produced by MATParser#stmtwhile.
+    def enterStmtwhile(self, ctx:MATParser.StmtwhileContext):
+        vector_table.append(f'\n//define while statement //')
+        vector = []  
+        
+        global if__end__label_counter
+        vector.append(f'__while__label{if__end__label_counter}:match {current_tset} ') #timeset   
+
+        for i in pinmaps_groups:
+            vector.append('-    ')
+
+        for i in range(1,len(ctx.children),2):
+            if isinstance(ctx.children[i] , MATParser.SetexpContext):
+                for count, value in enumerate(pinmaps_groups):
+                    if ctx.children[i].children[0].symbol.text == pinmaps_groups[count]:
+                        if(ctx.children[i].children[2].symbol.text == '0'):
+                            vector[count+1] = '  L    '
+                        else:
+                            vector[count+1] = '  H    '
+
+        vector_table.append(''.join(vector) + ';')
+        
+        vector = []  
+        vector.append(f'   {current_tset} ') #timeset
+        for i in pinmaps_groups:
+            vector.append('-    ')
+        vector_table.append('repeat(79) ' + ''.join(vector) + ';')
+        vector_table.append(f'jump_if(!matched, __end__label{if__end__label_counter})' + ''.join(vector) + ';') 
+        if__end__label_stack.append(if__end__label_counter)
+        if__end__label_counter = if__end__label_counter + 1 
+
+    # Exit a parse tree produced by MATParser#stmtwhile.
+    def exitStmtwhile(self, ctx:MATParser.StmtwhileContext):
+        vector = []  
+        vector.append(f'   {current_tset} ') #timeset
+        for i in pinmaps_groups:
+            vector.append('-    ')
+        vector_table.append(f'jump(__while__label{if__end__label_stack[-1]})' + ''.join(vector)+ ';')
+        vector_table.append(f'__end__label{if__end__label_stack.pop()}:' + ''.join(vector) + ';\n')
 
     # Enter a parse tree produced by MATParser#stmtrepeat.
     def enterStmtrepeat(self, ctx:MATParser.StmtrepeatContext):

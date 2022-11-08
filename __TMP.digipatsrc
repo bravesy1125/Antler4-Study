@@ -26,11 +26,11 @@ jump_if(!matched, __end__label1)   tset0 -    -    -    -    -    -    ;
    tset0 -    V    V    -    -    -    ;
 __end__label1:   tset0 -    -    -    -    -    -    ;
 
-
-  //else statement in if statement//
-jump_if(!matched, __end__label0)   tset0 -    -    -    -    -    -    ;
+//else statement in if statement//
+jump(__end__label0)   tset0 -    -    -    -    -    -    ;
 __else__label0:   tset0 -    -    -    -    -    -    ;
 
+   tset0 -    -    1    -    -    -    ;
 __end__label0:   tset0 -    -    -    -    -    -    ;
 
 
@@ -86,6 +86,14 @@ end_loop(__end__label4)   tset1 -    -    -    -    -    -    ;
 
 end_loop(__end__label3)   tset1 -    -    -    -    -    -    ;
 
+
+//define while statement //
+__while__label5:match tset1   H      H    -    -    -    -    ;
+repeat(79)    tset1 -    -    -    -    -    -    ;
+jump_if(!matched, __end__label5)   tset1 -    -    -    -    -    -    ;
    tset1 0    0    -    0000    -    -    ;
+jump(__while__label5)   tset1 -    -    -    -    -    -    ;
+__end__label5:   tset1 -    -    -    -    -    -    ;
+
 return   tset1    -    -    -    -    -    -    ;
 }
