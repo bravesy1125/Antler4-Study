@@ -1,10 +1,10 @@
 {
     "emeraldwalk.runonsave": {
         "commands": [
-            /*{
+            {
                 "match": "\\.mat",
                 "cmd": "test",
-            },
+            }, /*
             {
                 "match": "\\.py",
                 "cmd": "test",
@@ -15,5 +15,4 @@
             },*/
         ]
     },
-    "svg.preview.background": "transparent",
 }

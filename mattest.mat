@@ -61,14 +61,14 @@ label_example:
 
 }
 
-def main ()
+def main () 
 {
-    timeset tset1 ;
+    timeset tset1 ;  
     
     repeat 16 : set cs=1,clk=0;
     //set cs=1,clk=0;
     functionwhatever123();
-
+ 
     loop 1125
     {
         set cs=1,clk=0;
